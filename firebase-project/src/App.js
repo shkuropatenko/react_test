@@ -1,7 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 import firebase from 'firebase'; 
+import User from './User';
+import {
+  BrowserRouter as Router, 
+  Link,
+  Route,
+  Redirect,
+  withRouter
+} from 'react-router-dom'
 
 export default class App extends Component {
   constructor(props) {
@@ -18,7 +25,6 @@ export default class App extends Component {
 
   componentDidMount() {
     const db = firebase.database();
-
     const name = db.ref('name');
 
     name.on('value', (elem) => {
@@ -34,8 +40,6 @@ export default class App extends Component {
 
   createAccount = () => {
     const { email, password } = this.state;
-    // firebase.auth().createUserWithEmailAndPassword(email, password)
-    //   .catch(error => console.log(error));
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then( () => {
@@ -44,42 +48,20 @@ export default class App extends Component {
       .catch(error => console.log(error))
   };
 
-  sendData = () => {
-    const { key, value } = this.state;
-    const db = firebase.database();
-    db.ref(key).push(value);
-    alert('your data was written to db');
-  }
-
   render() {
     const { hasAccount, name } = this.state;
     console.log(name);
+
     return (
       <div>
         {
           hasAccount ?
             (
-              <div className="login_block">
-                <h1>Hello</h1>
-                <input
-                  type="text"
-                  id="key"
-                  placeholder="enter key"
-                  onChange={this.handleChange}
-                />
-                <input
-                  type="text"
-                  id="value"
-                  placeholder="enter value"
-                  onChange={this.handleChange}
-                />
-                
-                <input
-                  type="submit"
-                  value="Send"
-                  onClick={this.sendData}
-                />
-              </div>
+              <Router>
+                <div>
+                  <User path='/protected' component={User} />
+                </div>
+              </Router>
             )
             :
             (
@@ -96,7 +78,7 @@ export default class App extends Component {
                   placeholder="Password"
                   onChange={this.handleChange}
                 />
-
+                
                 <input
                   type="submit"
                   value="Send"
