@@ -4,7 +4,8 @@ import firebase from "firebase";
 import User from "./user/User";
 import Form from "./form/Form";
 import {
-  BrowserRouter as Router
+  BrowserRouter as Router,
+  Route 
 } from "react-router-dom"
 
 export default class App extends Component {
@@ -47,7 +48,6 @@ export default class App extends Component {
 
   render() {
     const { hasAccount, name } = this.state;
-    console.log(name);
 
     return (
       <div>
@@ -56,7 +56,7 @@ export default class App extends Component {
             (
               <Router>
                 <div>
-                  <User exact path="/protected" component={User} />
+                  <Route path="/protected" component={User} />
                 </div>
               </Router>
             )
@@ -64,7 +64,7 @@ export default class App extends Component {
             (
               <Router>
                 <div>
-                  <Form exact path="/" component={Form} />
+                  <Route path="/" component={Form} />
                 </div>
               </Router>
             )

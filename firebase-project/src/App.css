@@ -8,13 +8,43 @@
 }
 
 .login_block input {
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   margin: 0 0 20px;
-  height: 20px;
+  height: 30px;
+  width: 100%;
   padding: 5px 10px;
+  box-sizing: border-box;
+  outline: none;
 }
 
 .login_block input[type="submit"] {
   margin: 0;
   height: 30px;
+}
+
+.field-container {
+  position: relative;
+  padding: 0 0 20px;
+}
+
+.field-container input {
+  margin: 0;
+}
+
+.field-container .error-text {
+  display: none;
+  color: #f00;
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.field-container.error .error-text {
+  display: block;
+}
+
+.field-container.error input {
+  border-color: #f00;
 }
