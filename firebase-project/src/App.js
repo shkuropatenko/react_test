@@ -1,13 +1,10 @@
 import "./App.css";
 import React, { Component } from "react";
 import firebase from "firebase"; 
-import User from "./User";
+import User from "./user/User";
+import Form from "./form/Form";
 import {
-  BrowserRouter as Router, 
-  Link,
-  Route,
-  Redirect,
-  withRouter
+  BrowserRouter as Router
 } from "react-router-dom"
 
 export default class App extends Component {
@@ -59,32 +56,17 @@ export default class App extends Component {
             (
               <Router>
                 <div>
-                  <User path="/protected" component={User} />
+                  <User exact path="/protected" component={User} />
                 </div>
               </Router>
             )
             :
             (
-              <div className="login_block">
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Email"
-                  onChange={this.handleChange}
-                />
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                />
-                
-                <input
-                  type="submit"
-                  value="Send"
-                  onClick={this.createAccount}
-                />
-              </div>
+              <Router>
+                <div>
+                  <Form exact path="/" component={Form} />
+                </div>
+              </Router>
             )
         }
       </div>
