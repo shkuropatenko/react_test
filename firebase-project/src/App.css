@@ -48,3 +48,8 @@
 .field-container.error input {
   border-color: #f00;
 }
+
+.container {
+  margin: 0 100px;
+  padding: 0 40px;
+}
