@@ -1,14 +1,14 @@
-import './App.css';
-import React, { Component } from 'react';
-import firebase from 'firebase'; 
-import User from './User';
+import "./App.css";
+import React, { Component } from "react";
+import firebase from "firebase"; 
+import User from "./User";
 import {
   BrowserRouter as Router, 
   Link,
   Route,
   Redirect,
   withRouter
-} from 'react-router-dom'
+} from "react-router-dom"
 
 export default class App extends Component {
   constructor(props) {
@@ -25,9 +25,9 @@ export default class App extends Component {
 
   componentDidMount() {
     const db = firebase.database();
-    const name = db.ref('name');
+    const name = db.ref("name");
 
-    name.on('value', (elem) => {
+    name.on("value", (elem) => {
       this.setState({ name: elem.val() })
     });
   };
@@ -59,7 +59,7 @@ export default class App extends Component {
             (
               <Router>
                 <div>
-                  <User path='/protected' component={User} />
+                  <User path="/protected" component={User} />
                 </div>
               </Router>
             )
