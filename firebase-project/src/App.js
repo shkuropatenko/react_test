@@ -17,7 +17,6 @@ export default class App extends Component {
       hasAccount: false,
       name: '',
       key: '',
-      value: ''
     }
   };
 
@@ -28,12 +27,6 @@ export default class App extends Component {
     name.on("value", (elem) => {
       this.setState({ name: elem.val() })
     });
-  };
-
-  handleChange = ({ target: {value, id} }) => {
-    this.setState({
-      [id]: value
-    })
   };
 
   createAccount = () => {

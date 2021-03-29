@@ -6,9 +6,10 @@ export default class Form extends Component {
  
     this.state = {
       email: '',
-      valid: true
+      valid: true,
+      value: ''
     }
-    this.handleEmailChange = this.handleEmailChange.bind(this)
+    this.handleEmailChange = this.handleEmailChange.bind(this);
   }
   
   validateEmail (email) {
@@ -16,15 +17,17 @@ export default class Form extends Component {
     return re.test(email)
   }
   
-  handleEmailChange(e) {
+  handleEmailChange(e, value, id) {
       const email = e.target.value
       const emailValid = this.validateEmail(email) 
 
       this.setState({
         email: e.target.value,
-        valid: emailValid
+        valid: emailValid,
+        [id]: value
       })
   }
+  
   render() {
     let fieldContainerClass = 'field-container'
     const { email, valid } = this.state
@@ -39,19 +42,11 @@ export default class Form extends Component {
           type="email"
           id="email"
           placeholder="Email"
-          // onChange={this.handleChange}
           value={this.state.email}
           onChange={this.handleEmailChange} />
           <span className="error-text">Invalid e-mail address</span>
         </div>
-        {/* <div className={fieldContainerClass}>
-          <input type='email'
-          id="email"
-          placeholder='Email'
-          value={this.state.email}
-          onChange={this.handleEmailChange} />
-          <span>Invalid e-mail address</span>
-        </div> */}
+
         <input
           type="password"
           id="password"
