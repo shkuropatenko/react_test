@@ -6,7 +6,7 @@
 }
 
 .slide-box a {
-  color: #ccc;
+  color: #adadad;
 }
 
 .slide-box a:hover{
@@ -42,7 +42,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  color: #808882;
+  color: #0cad27;
   text-transform: capitalize;
   padding: 0 0 0 40px;
   font-size: 14px;

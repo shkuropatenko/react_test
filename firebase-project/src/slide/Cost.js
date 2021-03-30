@@ -5,7 +5,7 @@ export default class Cost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cost: '',
+      cost: "",
     }
   };
 
@@ -16,11 +16,11 @@ export default class Cost extends Component {
     cost.on("value", (elem) => {
       this.setState( {cost:elem.val()} );
     });
-
   };
 
   render() {
     const { cost } = this.state;
+    
     return(
       <div className="cost">
         {cost}

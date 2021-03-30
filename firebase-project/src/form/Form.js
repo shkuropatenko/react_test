@@ -5,10 +5,11 @@ export default class Form extends Component {
     super(props)
  
     this.state = {
-      email: '',
+      email: "",
       valid: true,
-      value: ''
+      value: ""
     }
+
     this.handleEmailChange = this.handleEmailChange.bind(this);
   }
   
@@ -29,12 +30,13 @@ export default class Form extends Component {
   }
   
   render() {
-    let fieldContainerClass = 'field-container'
-    const { email, valid } = this.state
+    let fieldContainerClass = "field-container";
+    const { email, valid } = this.state;
     
     if (!valid) {
-      fieldContainerClass += ' error'
+      fieldContainerClass += " error";
     }
+    
     return(
       <div className="container">
         <div className="login_block">

@@ -4,7 +4,6 @@ import firebase from "firebase";
 import User from "./user/User";
 import Form from "./form/Form";
 import SliderMain from "./slider/SliderMain";
-
 import {
   BrowserRouter as Router,
   Route 
@@ -14,10 +13,10 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       hasAccount: false,
-      key: '',
+      key: ""
     }
   };
 
@@ -27,7 +26,7 @@ export default class App extends Component {
 
   createAccount = () => {
     const { email, password } = this.state;
-
+    
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then( () => {
         this.setState( { hasAccount: true } )

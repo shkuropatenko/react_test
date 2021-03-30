@@ -5,7 +5,7 @@ export default class Availability extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      availability: '',
+      availability: "",
     }
   };
 
@@ -16,11 +16,11 @@ export default class Availability extends Component {
     availability.on("value", (elem) => {
       this.setState( {availability:elem.val()} );
     });
-
   };
 
   render() {
     const { availability } = this.state;
+
     return(
       <span className="availability">
         {availability}

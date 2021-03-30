@@ -5,7 +5,7 @@ export default class Image extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: '',
+      image: "",
     }
   };
 
@@ -21,6 +21,7 @@ export default class Image extends Component {
 
   render() {
     const { image } = this.state;
+    
     return(
       <img src={image} />
     )

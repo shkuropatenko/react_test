@@ -5,7 +5,7 @@ export default class Description extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: '',
+      description: "",
     }
   };
 
@@ -21,6 +21,7 @@ export default class Description extends Component {
 
   render() {
     const { description } = this.state;
+    
     return(
       <div className="description">
         {description}

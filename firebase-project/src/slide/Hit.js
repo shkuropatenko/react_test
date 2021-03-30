@@ -5,7 +5,7 @@ export default class Slide extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hit: '',
+      hit: "",
     }
   };
 
@@ -21,6 +21,7 @@ export default class Slide extends Component {
 
   render() {
     const { hit } = this.state;
+    
     return(
       <span className="hit">
         {hit}
