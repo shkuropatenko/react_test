@@ -36,29 +36,31 @@ export default class Form extends Component {
       fieldContainerClass += ' error'
     }
     return(
-      <div className="login_block">
-        <div className={fieldContainerClass}>
-        <input
-          type="email"
-          id="email"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={this.handleEmailChange} />
-          <span className="error-text">Invalid e-mail address</span>
-        </div>
+      <div className="container">
+        <div className="login_block">
+          <div className={fieldContainerClass}>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.handleEmailChange} />
+            <span className="error-text">Invalid e-mail address</span>
+          </div>
 
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          onChange={this.handleChange}
-        />
-        
-        <input
-          type="submit"
-          value="Send"
-          onClick={this.createAccount}
-        />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            onChange={this.handleChange}
+          />
+          
+          <input
+            type="submit"
+            value="Send"
+            onClick={this.createAccount}
+          />
+        </div>
       </div>
     )
   }

@@ -1,5 +1,5 @@
 .login_block {
-  width: 300px;
+  max-width: 300px;
   margin: 100px auto;
   padding: 20px;
   display: flex;
@@ -50,6 +50,7 @@
 }
 
 .container {
-  margin: 0 100px;
-  padding: 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
 }

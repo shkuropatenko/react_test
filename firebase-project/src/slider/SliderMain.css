@@ -1,0 +1,8 @@
+.slick-slider {
+  margin: 0 0 100px;
+}
+
+.slick-next:before,
+.slick-prev:before {
+  color: #ccc;
+}
