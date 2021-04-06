@@ -17,7 +17,8 @@
   outline: none;
 }
 
-.login_block input[type="submit"] {
+.login_block input[type="submit"],
+.login_block button[type="submit"] {
   margin: 0;
   height: 30px;
 }

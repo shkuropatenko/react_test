@@ -7,6 +7,7 @@ export default class User extends Component {
       <div className="container">
         <div className="login_block">
           <h1>Hello user</h1>
+          <button type="submit">Logout</button>
         </div>
       </div>
     )

@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import firebase from "firebase"; 
 import User from "./user/User";
 import Form from "./form/Form";
-import SliderMain from "./slider/SliderMain";
+// import Signup from "./form/Signup";
+// import SliderMain from "./slider/SliderMain";
 import {
   BrowserRouter as Router,
   Route 
-} from "react-router-dom"
+} from "react-router-dom";
 
 export default class App extends Component {
   constructor(props) {
@@ -17,48 +18,36 @@ export default class App extends Component {
       password: "",
       hasAccount: false,
       key: ""
-    }
-  };
+    };
+  }
 
   componentDidMount() {
-    const db = firebase.database();
-  };
+    firebase.database();
+  }
 
-  createAccount = () => {
-    const { email, password } = this.state;
+  createAccount (email, password) {
     
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then( () => {
-        this.setState( { hasAccount: true } )
+        this.setState( { hasAccount: true } );
       })
-      .catch(error => console.log(error))
-  };
+      .catch(error => console.log(error));
+  }
 
   render() {
-    const { hasAccount } = this.state;
-
     return (
-      <div>
-        {
-          hasAccount ?
-            (
-              <Router>
-                <div>
-                  <Route path="/protected" component={User} />
-                </div>
-              </Router>
-            )
-            :
-            (
-              <Router>
-                <div>
-                  <Route path="/" component={Form} />
-                  <SliderMain />
-                </div>
-              </Router>
-            )
-        }
-      </div>
+      <>
+        <Router>
+          {/* <Route path="/signup" render={Signup} /> */}
+             <Route path="/login" render={() => <Form createAccount={this.createAccount} />} />
+            {/* <ProtectedRoute
+            exact
+            path="/protected"
+            component={User}
+            roleType="admin"
+          /> */}
+        </Router>
+      </>
     )
   }
 }
