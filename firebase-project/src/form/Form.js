@@ -8,7 +8,7 @@ export default class Form extends Component {
       email: "",
       valid: true,
       value: "",
-      password:''
+      password:""
     };
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
