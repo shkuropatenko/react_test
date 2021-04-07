@@ -7,7 +7,8 @@
   border: 1px solid #ccc;
 }
 
-.login_block input {
+.login_block input,
+.btn {
   border: 2px solid #ccc;
   margin: 0 0 20px;
   height: 30px;
@@ -15,6 +16,12 @@
   padding: 5px 10px;
   box-sizing: border-box;
   outline: none;
+  cursor: pointer;
+}
+
+.btn {
+  width: auto;
+  margin: 0 10px 0 0;
 }
 
 .login_block input[type="submit"],
@@ -54,4 +61,15 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
+}
+
+.reg-link {
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px 0 0;
+  color: #afabab;
+}
+
+.reg-link:hover {
+  text-decoration: none;
 }

@@ -1,14 +1,12 @@
 import "./App.css";
 import React, { Component } from "react";
 import firebase from "firebase"; 
-import User from "./user/User";
+// import User from "./user/User";
 import Form from "./form/Form";
-// import Signup from "./form/Signup";
+import Signup from "./form/Signup";
 // import SliderMain from "./slider/SliderMain";
-import {
-  BrowserRouter as Router,
-  Route 
-} from "react-router-dom";
+import LandingPage from "./Lending";
+import {BrowserRouter, Route, Switch } from "react-router-dom";
 
 export default class App extends Component {
   constructor(props) {
@@ -37,16 +35,15 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Router>
-          {/* <Route path="/signup" render={Signup} /> */}
-             <Route path="/login" render={() => <Form createAccount={this.createAccount} />} />
-            {/* <ProtectedRoute
-            exact
-            path="/protected"
-            component={User}
-            roleType="admin"
-          /> */}
-        </Router>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/reg" component={Signup} />
+            <Route exact path="/login" component={Form} />
+            {/* {/ <ProtectedRoute exact path="/app" component={AppLayout} /> /} */}
+            <Route path="*" component={() => "404 NOT FOUND"} />
+          </Switch>
+        </BrowserRouter>
       </>
     )
   }

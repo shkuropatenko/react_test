@@ -8,7 +8,7 @@ export default class Form extends Component {
       email: "",
       valid: true,
       value: "",
-      password:""
+      password:''
     };
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -70,6 +70,10 @@ export default class Form extends Component {
               value="Send"
               onClick={()=>this.props.createAccount(this.state.email,this.state.password)}
             />
+            
+            <a href="/reg" className="reg-link" onClick={() => {
+              this.props.history.push("/reg");
+            }}>Registration</a>
           </form>
         </div>
       </div>
