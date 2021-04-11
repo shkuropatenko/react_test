@@ -1,82 +1,59 @@
-import React, { Component } from "react";
+import React, { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../Auth";
 
-export default class Form extends Component {
-  constructor (props) {
-    super(props);
- 
-    this.state = {
-      email: "",
-      valid: true,
-      value: "",
-      password:''
-    };
+export default function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { login } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-  }
-  
-  validateEmail (email) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  }
-  
-  handleEmailChange(e, value, id) {
-      const email = e.target.value;
-      const emailValid = this.validateEmail(email) ;
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-      this.setState({
-        email: email,
-        valid: emailValid,
-        [id]: value
-      });
-  }
-
-  handleChange (e) {
-    this.setState({
-        password: e.target.value
-      });
-  }
-  
-  render() {
-    let fieldContainerClass = "field-container";
-    const { email, valid } = this.state;
-    
-    if (!valid) {
-      fieldContainerClass += " error";
+    try {
+      setError("");
+      setLoading(true);
+      await login(emailRef.current.value, passwordRef.current.value);
+      history.push("/user");
+    } catch {
+      setError("Failed to log in");
     }
-    
-    return(
+
+    setLoading(false);
+  }
+
+  return (
+    <>
       <div className="container">
         <div className="login_block">
-            <form>
-            <div className={fieldContainerClass}>
+          {error && <div variant="danger">{error}</div>}
+            <form onSubmit={handleSubmit}>
               <input
-              type="email"
-              id="email"
-              placeholder="Email"
-              value={email}
-              onChange={this.handleEmailChange} />
-              <span className="error-text">Invalid e-mail address</span>
-            </div>
+                type="email"
+                id="email"
+                placeholder="Email"
+                ref={emailRef} />
 
-            <input
-              type="password"
-              id="password"
-              placeholder="Password"
-              onChange={this.handleChange}
-            />
-            
-            <input
-              type="submit"
-              value="Send"
-              onClick={()=>this.props.createAccount(this.state.email,this.state.password)}
-            />
-            
-            <a href="/reg" className="reg-link" onClick={() => {
-              this.props.history.push("/reg");
-            }}>Registration</a>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                ref={passwordRef} />
+              
+              <input
+                type="submit"
+                value="Send"
+                disabled={loading} />
+              
+              <a href="/reg" className="reg-link" onClick={() => {
+                this.props.history.push("/reg");
+              }}>Registration</a>
           </form>
         </div>
       </div>
-    )
-  }
+    </>
+  )
 }

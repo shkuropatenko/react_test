@@ -86,7 +86,7 @@
   margin: 0 0 10px;
 }
 
-.btn {
+.slide-box .btn {
   display: table;
   margin: 0 auto 10px;
   background: #0cad27;
@@ -99,7 +99,7 @@
   cursor: pointer;
 }
 
-.btn:hover {
+.slide-box .btn:hover {
   color: #0cad27;
   background: #fff;
 }
